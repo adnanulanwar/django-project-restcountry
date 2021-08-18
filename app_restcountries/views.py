@@ -58,3 +58,31 @@ def update(request, name):
         response.save()
         return Response("data has been updated")
     return Response(response.errors, status=403)
+
+
+@api_view(('DELETE',))
+def deleteCountry(request, name):
+    country = get_object_or_404(RestCountry, name=name)
+    country.delete()
+
+    return Response("Deleted Successfully")
+
+
+@api_view(('GET',))
+def borders(request, name):
+    country = get_object_or_404(RestCountry, name=name)
+    return Response(country.neighbours)
+
+
+@api_view(('GET',))
+def samelang(request, lang):
+    countries = RestCountry.objects.filter(languages__contains=lang)
+    list = countrySerializer(countries, many=True)
+    return Response(list.data)
+
+
+@api_view(('GET',))
+def search(request, name):
+    countries = RestCountry.objects.filter(name__contains=name)
+    list = countrySerializer(countries, many=True)
+    return Response(list.data)

@@ -24,4 +24,8 @@ urlpatterns = [
     path('details/<str:name>', views.countrydetail),
     path('createcountry/', views.createcountry),
     path('update/<str:name>', views.update),
+    path('delete/<str:name>', views.deleteCountry),
+    path('borders/<str:name>', views.borders),
+    path('samelang/<str:lang>', views.samelang),
+    path('search/<str:name>', views.search),
 ]
