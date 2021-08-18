@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from .models import RestCountry
 from .serializers import countrySerializer
 from rest_framework.decorators import api_view
+from django.shortcuts import get_object_or_404
 
 
 def allCountries(request):
@@ -30,3 +31,30 @@ class countryList(APIView):
         countries = RestCountry.objects.all()
         list = countrySerializer(countries, many=True)
         return Response(list.data)
+
+
+@api_view(('GET',))
+def countrydetail(request, name):
+    country = get_object_or_404(RestCountry, name=name)
+    response = countrySerializer(country)
+    return Response(response.data)
+
+
+@api_view(('POST',))
+def createcountry(request):
+
+    response = countrySerializer(data=request.data)
+    if response.is_valid():
+        response.save()
+        return Response("data has been saved")
+    return Response(response.errors, status=404)
+
+
+@api_view(('PUT',))
+def update(request, name):
+    country = get_object_or_404(RestCountry, name=name)
+    response = countrySerializer(instance=country, data=request.data)
+    if response.is_valid():
+        response.save()
+        return Response("data has been updated")
+    return Response(response.errors, status=403)
