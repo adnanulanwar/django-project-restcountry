@@ -22,3 +22,11 @@ def allCountries(request):
         x.neighbours = country['borders']
         x.save()
     return Response("ok. data saved")
+
+
+class countryList(APIView):
+
+    def get(self, request):
+        countries = RestCountry.objects.all()
+        list = countrySerializer(countries, many=True)
+        return Response(list.data)

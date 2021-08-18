@@ -20,5 +20,6 @@ from app_restcountries import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('countries/', views.allCountries),
+    path('listcountries/', views.countryList.as_view()),
 
 ]
