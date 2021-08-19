@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %} {% block content %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Countries</title>
+</head>
+
+<body>
+    <h1>{{ country.name }}</h1>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Neighboring Countries</th>
+                <th>Languages</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {% comment %} <ol>
+                        {% for i in country.neighbours %}
+                        <li>{{i}}</li>
+                        {% endfor %}
+                    </ol> {% endcomment %}
+                    {% comment %} {% for i in country.borders %}
+                    {{i}}
+                    {% endfor %} {% endcomment %}
+                    {{country.neighbours}}
+                </td>
+
+                <td>
+                    {{country.languages}}
+                    {% comment %} <ol>
+                        {% for i in country.languages %}
+                        <li>{{ i.name }}</li>
+                        {% endfor %}
+                    </ol> {% endcomment %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
+{% endblock %}

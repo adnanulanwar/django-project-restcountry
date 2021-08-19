@@ -91,3 +91,9 @@ def search(request, name):
 def showallcountries(request):
     countries = RestCountry.objects.all()
     return render(request, 'countrylist.html', {'countries': countries, })
+
+
+def viewcountry(request, name):
+    country = get_object_or_404(RestCountry, name=name)
+    #country = countrySerializer(con)
+    return render(request, 'viewcountry.html', {'country': country})

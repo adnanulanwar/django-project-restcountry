@@ -31,5 +31,7 @@ urlpatterns = [
     path('api/search/<str:name>', views.search),
 
     # URLs for template
-    path('showallcountries/', views.showallcountries)
+    path('showallcountries/', views.showallcountries),
+    path('view/<str:name>', views.viewcountry, name='viewcountry'),
+
 ]

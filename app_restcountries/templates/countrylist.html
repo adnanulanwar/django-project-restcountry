@@ -35,7 +35,7 @@
                     <td><img src="{{i.flag}}" height="100" width="100"></td>
                     {% comment %} <td><a id="i" class="btn btn-borderd font-weight-bold  p-2 mt-4"  href="#" role="button" >Details</a></td> {% endcomment %}
                     <td>
-                        <form method="get" action="#">
+                        <form method="get" action="{% url 'viewcountry' i.name %}">
                             <button class="font-weight-bold form-control p-2 mt-4" type="submit">Details</button>
                         </form>
                     </td>
