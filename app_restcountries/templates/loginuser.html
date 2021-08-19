@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<h1>Login</h1>
+
+
+<div class="row no-gutters justify-content-center my-auto">
+    <div class="col-sm-8 col-md-4 col-lg-4 align-self-center mt-xs-0 mt-sm-5 mt-md-5 mt-lg-5">
+        <div class="card bg-warning p-4 border border-radius border-warning">
+            <a href="" class="ics-cursor-pointer">
+                <img src="{% static 'logo.png' %}" class="img-fluid p-5 cursor-pointer" alt=" logo" />
+            </a>
+            <div class="col-md-12 text-center">
+                <div class="h4">{{ error }}</div>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="font-weight-bold form-control p-2 mt-4"class="font-weight-bold form-control p-2 mt-4" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

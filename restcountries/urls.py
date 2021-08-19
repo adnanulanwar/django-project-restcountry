@@ -19,9 +19,13 @@ from app_restcountries import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home),
+    path('signup/', views.signupuser, name='signupuser'),
+    path('login/', views.loginuser, name='loginuser'),
+    path('logout/', views.logoutuser, name='logoutuser'),
     # API urls
     path('api/countries/', views.allCountries),
-    path('api/listcountries/', views.countryList.as_view()),
+    path('api/listcountries/', views.countryList),
     path('api/details/<str:name>', views.countrydetail),
     path('api/createcountry/', views.createcountry),
     path('api/update/<str:name>', views.update),
