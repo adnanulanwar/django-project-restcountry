@@ -19,13 +19,17 @@ from app_restcountries import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('countries/', views.allCountries),
-    path('listcountries/', views.countryList.as_view()),
-    path('details/<str:name>', views.countrydetail),
-    path('createcountry/', views.createcountry),
-    path('update/<str:name>', views.update),
-    path('delete/<str:name>', views.deleteCountry),
-    path('borders/<str:name>', views.borders),
-    path('samelang/<str:lang>', views.samelang),
-    path('search/<str:name>', views.search),
+    # API urls
+    path('api/countries/', views.allCountries),
+    path('api/listcountries/', views.countryList.as_view()),
+    path('api/details/<str:name>', views.countrydetail),
+    path('api/createcountry/', views.createcountry),
+    path('api/update/<str:name>', views.update),
+    path('api/delete/<str:name>', views.deleteCountry),
+    path('api/borders/<str:name>', views.borders),
+    path('api/samelang/<str:lang>', views.samelang),
+    path('api/search/<str:name>', views.search),
+
+    # URLs for template
+    path('showallcountries/', views.showallcountries)
 ]

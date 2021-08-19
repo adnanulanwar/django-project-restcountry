@@ -86,3 +86,8 @@ def search(request, name):
     countries = RestCountry.objects.filter(name__contains=name)
     list = countrySerializer(countries, many=True)
     return Response(list.data)
+
+
+def showallcountries(request):
+    countries = RestCountry.objects.all()
+    return render(request, 'countrylist.html', {'countries': countries, })
