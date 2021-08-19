@@ -89,8 +89,13 @@ def search(request, name):
 
 
 def showallcountries(request):
-    countries = RestCountry.objects.all()
-    return render(request, 'countrylist.html', {'countries': countries, })
+    if request.method == "GET":
+        countries = RestCountry.objects.all()
+        return render(request, 'countrylist.html', {'countries': countries, })
+    else:
+        name = request.POST['namesearch']
+        countries = RestCountry.objects.filter(name__contains=name)
+        return render(request, 'countrylist.html', {'countries': countries, })
 
 
 def viewcountry(request, name):

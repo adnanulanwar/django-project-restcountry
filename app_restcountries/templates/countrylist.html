@@ -10,8 +10,16 @@
     <title>All Countries</title>
 </head>
 <body>
-    <h1>All Countries </h1>
- 
+     <div class="card">
+        <div class="card-header ">
+            <h1>All Countries </h1>
+            <form class="float-right" method="POST">
+                {% csrf_token %}
+                <input type="search" id="namesearch" name="namesearch">
+                <button class="font-weight-bold" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
     <table class="table table-bordered table-striped table-hover">
         <thead class="thead-dark">
             <tr>
